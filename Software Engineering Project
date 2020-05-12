@@ -1,5 +1,4 @@
-/*
- * Quick response code generator and reader
+* Quick response code generator and reader
  * 
  * @author IC
  * @version 1.0.0
@@ -51,7 +50,8 @@ public class Project {
 			"E2004",
 			"E0028",
 			"A0004",
-			"A0006",
+			"A0006", 
+			"E0031",
 			"B1080"
 			
 	};
@@ -60,6 +60,7 @@ public class Project {
 			"your left into the Engineering building.  Stay on the ground floor and follow the corridor round the lift.  It is the first door on your left in the main corridor.",
 			"your right past reception desk.  Stay on this level.  It is the large lecture room in front of you.",
 			"your right past reception desk. Stay on this level.  It is the large lecture room in front of you on the left.",
+			"your left past reception desk. Stay on this level. Follow the corridor. The lecture room is near the end of the corridor on the left",
 			"your right past reception desk. Stay on this level. Follow the first stairs you meet. Follow the main concourse past the food court. Take the hall to your next left. The room is the first on your right"
 			};
 
@@ -67,7 +68,8 @@ public class Project {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws WriterException, IOException, NotFoundException {
 		// Initial hardcoded data for test program 
-		String qrCodeData = "Day: Tuesday\nTime: 09:00 to 11:00\nSubject: Software Engineering\nRoom: B1080";
+		String qrCodeData = "Day: Tuesday\n   Time: 09:00 to 11:00\n   Subject: Software Engineering\n   Room: E0031";
+//		String qrCodeData = "Day: Tuesday\n   Time: 09:00 to 11:00\n   Subject: Software Engineering\n   Room: A0005"; // error use case
 		String filePath = "myQRCode.png";
 		String charset = "UTF-8"; // or "ISO-8859-1"
 		Project myVoice = new Project();
@@ -98,7 +100,7 @@ public class Project {
 			}
 		}	
 		if (foundMatch == false) {
-			roomInfo = "I'm sorry.  I could not find this room in the building.";
+			roomInfo = "I'm sorry.  I could not find this room in the building. Plase try a differint room";
 		} else {
 			roomInfo = "To get to, " + chosenRoom + "," + fromReception + roomDir;	// give directions
 		}
@@ -178,3 +180,4 @@ public class Project {
 
 	
 }
+
